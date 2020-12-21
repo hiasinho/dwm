@@ -1,7 +1,6 @@
 config.h
 *.orig
 *.rej
-patches
 util.o
 dwm
 dwm.o

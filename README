@@ -52,6 +52,8 @@ Patches
 Patches are kept in their own branch and then merged into a combined branch
 `hiasinho`. This is the branch I `make` and use.
 
+* center - https://dwm.suckless.org/patches/center/dwm-center-6.2.diff
+
 Keeping everything up-to-date
 -----------------------------
 This repo is a direct fork from https://git.suckless.org/dwm.
