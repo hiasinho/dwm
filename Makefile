@@ -27,6 +27,8 @@ dwm: ${OBJ}
 
 clean:
 	rm -f dwm ${OBJ} dwm-${VERSION}.tar.gz
+	rm -f config.h
+	rm -rf bin
 
 dist: clean
 	mkdir -p dwm-${VERSION}
@@ -35,6 +37,12 @@ dist: clean
 	tar -cf dwm-${VERSION}.tar dwm-${VERSION}
 	gzip dwm-${VERSION}.tar
 	rm -rf dwm-${VERSION}
+
+check: all
+	mkdir -p bin
+	cp -f dwm bin
+	chmod 755 bin/dwm
+	rm -rf bin
 
 install: all
 	mkdir -p ${DESTDIR}${PREFIX}/bin
@@ -48,4 +56,4 @@ uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
 		${DESTDIR}${MANPREFIX}/man1/dwm.1
 
-.PHONY: all options clean dist install uninstall
+.PHONY: all options clean dist check install uninstall
