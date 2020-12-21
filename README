@@ -46,3 +46,25 @@ Configuration
 -------------
 The configuration of dwm is done by creating a custom config.h
 and (re)compiling the source code.
+
+Patches
+-------
+Patches are kept in their own branch and then merged into a combined branch
+`hiasinho`. This is the branch I `make` and use.
+
+Keeping everything up-to-date
+-----------------------------
+This repo is a direct fork from https://git.suckless.org/dwm.
+
+The `master` branch represents my own flavor of dwm with some patches useful to
+me right now.
+
+```bash
+git merge upstream/master
+```
+
+or for the patch branches
+
+```bash
+git merge upstream/center
+```
