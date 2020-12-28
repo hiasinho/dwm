@@ -30,6 +30,8 @@ static const Rule rules[] = {
 	{ "Gimp",     NULL,       NULL,       0,            0,           1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           0,           -1 },
 	{ "St",       NULL,       "pulsemixer", 0,          1,           1,           -1 },
+	{ "St",       NULL,       "newsboat", 0,            1,           1,           -1 },
+	{ "Arandr",   NULL,       NULL,       0,            1,           1,           -1 },
 };
 
 /* layout(s) */
@@ -100,6 +102,10 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("sysact") },
 	{ MODKEY|ShiftMask,             XK_BackSpace, quit,        {0} },
+
+	{ MODKEY,                       XK_w,      spawn,          SHCMD("chromium") },
+	{ MODKEY|ControlMask,           XK_n,      spawn,          SHCMD("st -t newsboat -e newsboat") },
+	{ MODKEY|ControlMask,           XK_s,      spawn,          SHCMD("slack") },
 
 	{ MODKEY,                       XK_F4,     spawn,          SHCMD("st -e pulsemixer; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,                       XK_F7,     spawn,          SHCMD("displayselect") },
