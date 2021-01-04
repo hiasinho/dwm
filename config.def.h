@@ -4,12 +4,12 @@
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const unsigned int systrayspacing = 1;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10", "JoyPixels:pixelsize=10:antialias=true:autohint=true"  };
+static const char *fonts[]          = { "monospace:size=10", "emoji:pixelsize=10:antialias=true:autohint=true"  };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -36,6 +36,7 @@ static const Rule rules[] = {
 	{ "St",       NULL,       "pulsemixer", 0,          1,           1,           -1 },
 	{ "St",       NULL,       "newsboat", 0,            1,           1,           -1 },
 	{ "Arandr",   NULL,       NULL,       0,            1,           1,           -1 },
+	{ "zoom",     NULL,       "Settings", 0,            1,           1,           -1 },
 };
 
 /* layout(s) */
@@ -84,7 +85,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
@@ -109,9 +110,14 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("sysact") },
 	{ MODKEY|ShiftMask,             XK_BackSpace, quit,        {0} },
 
-	{ MODKEY,                       XK_w,      spawn,          SHCMD("chromium") },
+	{ MODKEY,                       XK_w,      spawn,          SHCMD("$BROWSER") },
 	{ MODKEY|ControlMask,           XK_n,      spawn,          SHCMD("st -t newsboat -e newsboat") },
-	{ MODKEY|ControlMask,           XK_s,      spawn,          SHCMD("slack") },
+	{ MODKEY|ControlMask,           XK_s,      spawn,          SHCMD("dmenustrategyzer") },
+
+	{ MODKEY|ShiftMask,             XK_c,      spawn,          SHCMD("st -t dwmconfig -e vim ~/.local/src/dwm/config.def.h") },
+	{ MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("dmenuemoji") },
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("radio") },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("maimpick") },
 
 	{ MODKEY,                       XK_F4,     spawn,          SHCMD("st -e pulsemixer; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,                       XK_F7,     spawn,          SHCMD("displayselect") },
