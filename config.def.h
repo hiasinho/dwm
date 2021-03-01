@@ -33,8 +33,9 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            0,           1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           0,           -1 },
-	{ "St",       NULL,       "pulsemixer", 0,          1,           1,           -1 },
+	{ "St",       NULL,       "ncmpcpp",  0,            1,           1,           -1 },
 	{ "St",       NULL,       "newsboat", 0,            1,           1,           -1 },
+	{ "St",       NULL,       "pulsemixer", 0,          1,           1,           -1 },
 	{ "Arandr",   NULL,       NULL,       0,            1,           1,           -1 },
 	{ "zoom",     NULL,       "Settings", 0,            1,           1,           -1 },
 	{ "Xscreensaver-demo", NULL, NULL,    0,            1,           1,           -1 },
@@ -114,6 +115,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_BackSpace, quit,        {0} },
 
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("$BROWSER") },
+	{ MODKEY|ControlMask,           XK_m,      spawn,          SHCMD("st -t ncmpcpp -e ncmpcpp") },
 	{ MODKEY|ControlMask,           XK_n,      spawn,          SHCMD("st -t newsboat -e newsboat") },
 	{ MODKEY|ControlMask,           XK_s,      spawn,          SHCMD("dmenustrategyzer") },
 
@@ -128,6 +130,14 @@ static Key keys[] = {
 	{ 0, XF86XK_AudioMute,                     spawn,          SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioRaiseVolume,              spawn,          SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioLowerVolume,              spawn,          SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
+	{ 0, XF86XK_AudioLowerVolume,              spawn,          SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
+	{ 0, XF86XK_AudioPrev,                     spawn,          SHCMD("mpc prev") },
+	{ 0, XF86XK_AudioNext,                     spawn,          SHCMD("mpc next") },
+	{ 0, XF86XK_AudioPause,                    spawn,          SHCMD("mpc pause") },
+	{ 0, XF86XK_AudioPlay,                     spawn,          SHCMD("mpc play") },
+	{ 0, XF86XK_AudioStop,                     spawn,          SHCMD("mpc stop") },
+	{ 0, XF86XK_AudioRewind,                   spawn,          SHCMD("mpc seek -10") },
+	{ 0, XF86XK_AudioForward,                  spawn,          SHCMD("mpc seek +10") },
 };
 
 /* button definitions */
